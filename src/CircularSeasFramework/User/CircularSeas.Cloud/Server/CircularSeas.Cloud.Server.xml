@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CircularSeas.Cloud.Server</name>
+    </assembly>
+    <members>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.DocsController.GetPdf(System.Guid)">
+            <summary>
+            Download a PDF with the information of a filament spool (GUID, Date and QR code)
+            </summary>
+            <param name="orderId">GUID of an order</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetMaterials(System.Boolean,System.Guid,System.Boolean)">
+            <summary>
+            Get a list of the materials with the data of their properties
+            </summary>
+            <param name="includeProperties">Boolean to include data of non-visible properties</param>
+            <param name="nodeStock">GUID of the stock of the node</param>
+            <param name="forUsers">Boolean to indicate if it requested by an user or a service provider</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetMaterialDetail(System.Guid)">
+            <summary>
+            Get the data of an specific material
+            </summary>
+            <param name="materialId">GUID Identifier of the material</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetProperties">
+            <summary>
+            Get a list of the values of each propertie
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetPropertyDetail(System.Guid)">
+            <summary>
+            Get a list of the values of a specific property
+            </summary>
+            <param name="propertyId">GUID of the property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetMaterialSchema">
+            <summary>
+            Get a list of materials with their related properties
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetOrders(System.Int32,System.Guid)">
+            <summary>
+            Get a list of orders
+            </summary>
+            <param name="status">0: all, 1:pending, 2: delivering, 3:finished</param>
+            <param name="nodeId">GUID of the node that request the information</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.GetNodes">
+            <summary>
+            Get a list with the data of each node
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PostProperty(CircularSeas.Models.Property)">
+            <summary>
+            Create a new property to consider in the Material-Helping section of the user application
+            </summary>
+            <param name="property">Object that represents a property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PostMaterial(CircularSeas.Models.Material)">
+            <summary>
+            Create a new material
+            </summary>
+            <param name="material">Object that represents a property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PostOrder(CircularSeas.Models.Order)">
+            <summary>
+            Create a new order
+            </summary>
+            <param name="order">Object that represents an order</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PostSettingsBundle(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Add new settings of the Cloud CAM
+            </summary>
+            <param name="file">Bundle file with the whole configuration of materials, profiles, printers and compatibilities (.INI) </param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PostSettingsLines(CircularSeas.Models.DTO.ConfigDTO)">
+            <summary>
+            Add new settings of the Cloud CAM
+            </summary>
+            <param name="bundle">List that represents the materials, profiles, printers and compatibilities (.INI) </param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutPropertyVisibility(System.Guid,System.Boolean)">
+            <summary>
+            Update the visibility of a property for an user in the Material-Helping section
+            </summary>
+            <param name="propertyId">GUID of the selected property</param>
+            <param name="visible">Value of the visibility of the selected property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutUpdateMaterial(CircularSeas.Models.Material)">
+            <summary>
+            Update the value of any property of a material (evaluation)
+            </summary>
+            <param name="material">Object of a material with the updated data of the evaluation of its properties</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutUpdateProperty(CircularSeas.Models.Property)">
+            <summary>
+             Update the value of any property of a material (evaluation)
+            </summary>
+            <param name="property">Object with the updated values of a property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutUpdateOrder(CircularSeas.Models.Order)">
+            <summary>
+            Update the value of any property of an order 
+            </summary>
+            <param name="order">Object with the updated values of an order</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutReceiveOrder(System.Guid)">
+            <summary>
+            Mark an order as received or not
+            </summary>
+            <param name="orderId">GUID of an order</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.PutSpendSpool(System.Guid,System.Guid,System.Int32)">
+            <summary>
+            Mark a filament spool as finished
+            </summary>
+            <param name="nodeId">GUID of the node</param>
+            <param name="materialId">GUID of the material</param>
+            <param name="amount">Value of the new amount of filament spools</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.DeleteProperty(System.Guid)">
+            <summary>
+            Delete a property of the BBDD
+            </summary>
+            <param name="propertyId">GUID of a property</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ManagementController.DeleteMaterial(System.Guid)">
+            <summary>
+            Delete a material of the BBDD
+            </summary>
+            <param name="materialId">GUID of a material</param>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ProcessController.TestRoute">
+            <summary>
+            Router for testing the proper connection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ProcessController.GetInfoPrinter(System.String,System.Guid)">
+            <summary>
+             Getting printer information, materials and assistance to the selection of materials.
+            </summary>
+            <param name="printerName"> Name of the printer </param>
+            <param name="nodeID"> ID of the Node logged into the application </param>
+            <returns> An object with printer, materials and topsis data </returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ProcessController.PostSlice(System.String,System.String,System.String,System.String)">
+            <summary>
+            Generation of a G-Code file from a STL file (body parameter) 
+            </summary>
+            <param name="printer">name of the printer</param>
+            <param name="filament">name of the material</param>
+            <param name="print">name of the profile</param>
+            <param name="support">if contains support material or not</param>
+            <returns> </returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Controllers.ProcessController.PostUploadSTL">
+            <summary>
+            This function upload a STL file.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CircularSeas.Cloud.Server.Helpers.Tools.searchingOption">
+            <summary>
+            Enumeration containing three options to indicate what is searching
+            </summary>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Helpers.Tools.#ctor(CircularSeas.Adapters.ILog,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Constructor of the Utilities Class
+            </summary>
+            <param name="log"> Injection of the Log service </param>
+            <param name="appSettings"> Injection of the appSettings service </param>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Helpers.Tools.ConfigFileCreator(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Creation of the PrusaSlicer configuration file to print
+            </summary>
+            <param name="_printer"> Name of the printer selected </param>
+            <param name="_filament"> Name of the material selected </param>
+            <param name="_profile"> Name of the print profile (quality) selected </param>
+            <param name="_params"> Dictionary that contains all the specific parameters to overwrite the ones in the .ini files </param>
+            <returns> The name of the file generated (inside this function) that contains the configuration selected</returns>
+        </member>
+        <member name="M:CircularSeas.Cloud.Server.Helpers.Tools.loadConfigParams(System.String,System.String,CircularSeas.Cloud.Server.Helpers.Tools.searchingOption,System.Collections.Generic.SortedDictionary{System.String,System.String}@)">
+            <summary>
+            Search in the configuration files for a selected printer, a selected material (filament) or a selected quality (profile) and load all the parameters in a dictionary passed by reference. 
+            </summary>
+            <param name="selection"> It stands for the printer, filament or quality (print profile) selected. </param>
+            <param name="fileName"> Contains the configuration file of all printers/filaments/qualities </param>
+            <param name="option"> Indicates whether the printer, media, or print profile is being searched. </param>
+            <param name="iniDict"> [REF] Dictionary that will contai all the parameters of the .ini files </param>
+        </member>
+    </members>
+</doc>

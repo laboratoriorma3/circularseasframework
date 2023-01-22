@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\diego\Downloads\CircularSeas_Entornos\CS\src\CircularSeasFramework\User\CircularSeas.Cloud\Server\CircularSeas.Cloud.Server.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Domain\CircularSeas.Adapters\CircularSeas.Adapters.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\CircularSeas.Infrastructure.GenPDF\CircularSeas.Infrastructure.GenPDF.csproj" />
+    <ProjectReference Include="..\..\CircularSeas.IoC\CircularSeas.IoC.csproj" />
+    <ProjectReference Include="..\Client\CircularSeas.Cloud.Client.csproj" />
+  </ItemGroup>
+
+
+</Project>

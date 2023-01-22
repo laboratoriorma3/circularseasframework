@@ -1,0 +1,103 @@
+﻿@page "/materials/orders"
+
+<h3>Material Orders</h3>
+
+@if (_loading)
+{
+    <Loader />
+}
+
+@*<div class="card">
+    <div class="card-header">
+
+    Order list
+    </div>
+    <div class="card-body btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(1)">Pending</button>
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(2)">In progress</button>
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(3)">Finished</button>
+    </div>
+    </div>*@
+
+<div class="card-body btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(1)">Pending</button>
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(2)">In progress</button>
+    <button type="button" class="btn btn-secondary" @onclick="() => ChangeSection(3)">Finished</button>
+</div>
+
+
+@if (_currentSection == 1)
+{
+    <h4>Pending Orders</h4>
+}
+else if (_currentSection == 2)
+{
+    <h4>In progress orders</h4>
+}
+else if (_currentSection == 3)
+{
+    <h4>Finished Orders</h4>
+
+}
+
+
+<div class="table-responsive-md">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+
+                <th scope="col">
+                    @this.GetDateSection()
+                </th>
+                <th scope="col">
+                    Client
+                </th>
+                <th scope="col">
+                    Material
+                </th>
+                @if (_currentSection == 1 || _currentSection == 2)
+                {
+                    <th scope="col">Mark as sended</th>
+                }
+                <th scope="col">
+                    Quantity
+                </th>
+                <th scope="col" style="width: 10%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (_orders != null)
+            {
+                @foreach (var order in this.SortedOrders())
+                {
+                    <tr>
+
+                        <td>
+                            @this.GetDateSection(order)
+                        </td>
+                        <td>@order.Node.Name</td>
+                        <td>@order.Material.Name</td>
+                        @if (_currentSection == 1 || _currentSection == 2)
+                        {
+                            <td>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="@order.Id" checked="@order.Delivered"
+                               @onchange="(ChangeEventArgs e) => MarkDelivered(e, order,_currentSection)">
+                                    <label class="custom-control-label" for="@order.Id"></label>
+                                </div>
+                            </td>
+                        }
+                        <td>@order.SpoolQuantity</td>
+                        <td>
+                            <!--Detai buttons-->
+                    <a class="btn btn-outline-secondary" href="@($"{Http.BaseAddress}api/docs/pdf/{order.Id}")" target="_blank">
+                                <span class="oi oi-data-transfer-download"></span>
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>

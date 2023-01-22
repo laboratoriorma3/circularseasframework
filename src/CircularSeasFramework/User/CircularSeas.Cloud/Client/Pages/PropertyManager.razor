@@ -1,0 +1,89 @@
+﻿@page "/properties/management"
+<h3>Properties manager</h3>
+
+@if (_loading)
+{
+    <Loader Center="true" />
+}
+<!--Sticky bar with search fields-->
+<div class="d-flex flex-row cssticky-bar" style="background-color: white; z-index: 500">
+    <div class="flex-fill">
+        <div class="d-flex flex-row mr-2">
+            <div class="flex-fill cslabelheader">Name</div>
+            <input class="w-75 form-control cslabelcontent" type="text" placeholder="Search by name..."
+                   @bind="_filterProperty"
+                   @bind:event="oninput" />
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-outline-primary" @onclick="@(()=> LaunchEdition(null))">Add property</button>
+    </div>
+</div>
+@if (_state != Tools.StateEdition.None)
+{
+    <PropertyEditor Property="_editingProperty" PropertyChange="FinishEdition" />
+}
+else
+{
+    <!--Responsive table showing assessments, including interactive table header for sorting-->
+    <div class="table-responsive-md">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Description
+                    </th>
+                    <th scope="col">
+                        Visibility to users
+                    </th>
+                    <th scope="col" style="width: 20%">Modify</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (_properties != null)
+                {
+                    @foreach (var prop in _properties)
+                    {
+                        <tr>
+                            <td>@prop.Name</td>
+                            <td>@prop.HelpText</td>
+                            <td>
+                                @if (prop.MoreIsBetter != null)
+                                {
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="@prop.Id" checked="@prop.Visible"
+                                            @onchange="(ChangeEventArgs e) => ChangeVisibility(e, prop)">
+                                        <label class="custom-control-label" for="@prop.Id"></label>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        Set "More is better" to yes/no first
+                                    </div>
+                                }
+
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-secondary" @onclick="@(() => LaunchEdition(prop))">
+                                    <span class="oi oi-pencil"></span>
+                                </button>
+                                <button class="btn btn-outline-danger" @onclick="@(()=> Delete(prop))">
+                                    <span class="oi oi-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
