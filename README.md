@@ -1,6 +1,6 @@
 # CircularSeas
 
-Repository of the UVIGO developments under WP6 within the research project EAPA_117 / 2018_CircularSeas: “Turning ocean plastic waste into green products for maritime industries”.
+Repository of the UVIGO developments under WP6 Action 2 within the research project EAPA_117 / 2018_CircularSeas: “Turning ocean plastic waste into green products for maritime industries”.
 
 It includes the source code of:
 
