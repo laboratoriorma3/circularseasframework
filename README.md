@@ -44,3 +44,6 @@ In addition, measurements of filament diameter will perform using OMRON FQ-M Vis
 Developers that contributes in this repository: Bruno Portela (main contributor), Julio Garrido, Diego Silva, Enrique Riveiro, Josué R. Rivera y Alejandro Alonso.
 
 The result are published on Applied Sciences, a JCR Q2 Journal: https://doi.org/10.3390/app11093787
+
+# Funding
+This research was partially funded by the European Regional Development Fund (ERDF): Interreg Atlantic Area programme, grant number EAPA_117/2018” and The APC was funded by the ERDF: Interreg Atlantic Area programme.
