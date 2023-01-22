@@ -1,6 +1,6 @@
 # CircularSeas
 
-Repository of the research project EAPA_117 / 2018_CircularSeas: “Turning ocean plastic waste into green products for maritime industries” that includes the necessary software developments to achieve the project objectives.
+Repository of the UVIGO developments under WP6 within the research project EAPA_117 / 2018_CircularSeas: “Turning ocean plastic waste into green products for maritime industries”.
 
 It includes the source code of:
 
@@ -40,6 +40,4 @@ This tries to improve the prototype v2, using a servo motor with a reducer to ex
 
 In addition, measurements of filament diameter will perform using OMRON FQ-M Vision Sensor via EtherCAT from TwinCAT3.
 
-## CircularSeasPrinter
-
-Work in progress.
+Developers that contributes in this repository: Bruno Portela, Diego Silva, Julio Garrido, Enrique Riveiro, Josué Roberto Rivera Andrade y Alejandro Alonso.
