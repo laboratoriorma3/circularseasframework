@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <GVL Name="GVL" Id="{46d428ad-1ef1-4941-a8be-12cc2c082151}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	
+	Mode: Modes;
+	Vision:SensorFQM;
+	VisionResults:ARRAY [0..7] OF REAL;
+	VisionResultsmm:ARRAY [0..7] OF REAL;
+	//ScalingFactor:REAL:= 0.0414;
+	ScalingFactor:REAL:= 0.03798; 	//Factor de escalado (mm/pixeles) para broca de 1.75mm
+	
+	NuevaMedidaCamara:BOOL:=FALSE; 	//Variable auxiliar para el control de la camara
+	
+	//Variables para el control de la temperatura
+	TempTerT: LREAL; 	//Temperatura medida por el Pt100 del termico superior
+	TempTerB: LREAL; 	//Temperatura medida por el Pt100 del termico inferior
+	//TempExtrusion:REAL:=205;	//Temperatura de extrusion dependiendo del material (PLA)
+	TempExtrusion:REAL:=195;	//Para pruebas
+	
+	//Variables para el control del diametro del filamento con el sensor mecanico
+	MedidaSensorMecanico:REAL:=0.0;		//Media de medidas y por tanto medida del diametro
+	
+	//Variables para el control del diametro
+	config:BOOL:=0; 			//0 para 1.75mm y 1 para 2.85mm de diametro
+	dReferencia:REAL:=1.75; 	//1.75 o 2.85
+	//Estos valores (vPaso y dTolerancia) habría que asignarlos de forma correcta segun los parametros del motor inferior
+	vPaso:INT:=2; 				//Valor para variar la velocidad de actuacion de los rodillos inferiores
+	dTolerancia:REAL:=0.03; 	//Tolerancia permitida en la medida del diametro del filamento
+	
+	//Variable para controlar velocidad del motor inferior (puller)
+	//A estas variables habria que asignarle unos valores correctos para realizar el control de forma optima
+	ActPuller: LREAL; 			//Valor inicial de actuacion que variara segun el valor del diametro
+	ActPuller_Max: LREAL;
+	ActPuller_Min: LREAL;
+	
+	State:INT:= 0; //Para gestion de la maquina de estados
+	//0: estado inicial
+	//1: dar potencia
+	//2: calentar 
+	//3: mover en velocidad extrusora y puller
+	//4: funcionamiento extrusora
+	//5: nueva foto y gestion de termicos
+	//6: calculo de la nueva velocidad
+	//7: cambio de velocidad del puller
+	//30: parar ejes
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="Manual" Id="{ee1bf0c1-cf50-4f2d-9ac3-afa6241a629b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Manual
+VAR
+	
+	ExitManual:F_TRIG;
+	
+	LoopCounter:INT;
+	
+	//Variables para la lectura de sensores
+	MedSensores:REAL:=0.0;
+	SumSenOpt: REAL:=0.0;
+	MedSenOpt: REAL:=0.0;
+	
+	//Variables para la media de medidas de los sensores
+	Lecturas:ARRAY[0..9] OF REAL:=[10(0.0)]; 	//Medidas del diametro inicializadas
+	Index:INT:=0; 								//Indice del vector de medidas 
+	Suma:REAL:=0.0; 							//Suma de medidas
+	Medida:REAL:=0.0; 							//Media de medidas y por tanto medida del diametro
+	
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF GVL.Mode = Modes.MAN THEN
+	//Gestion de temperatura para extrusion.
+	IF (GVL.TempTerT>(GVL.TempExtrusion*0.95)) OR (NOT HMI.Bt_ManHeatTop) THEN 	//Gestiona el calentador superior
+		IO.Q_HeaterT:=FALSE;
+	END_IF
+	IF (GVL.TempTerT<(GVL.TempExtrusion*0.95-1.0)) AND HMI.Bt_ManHeatTop THEN
+		IO.Q_HeaterT:=TRUE;
+	END_IF
+	
+	IF (GVL.TempTerB>(GVL.TempExtrusion)) OR (NOT HMI.Bt_ManHeatBot) THEN 		//Gestiona el calentador inferior
+		IO.Q_HeaterB:=FALSE;
+	END_IF
+	IF (GVL.TempTerB<(GVL.TempExtrusion-1.0))AND HMI.Bt_ManHeatBot THEN
+		IO.Q_HeaterB:=TRUE;
+	END_IF
+	
+	//Al pulsar botones, primero dar orden de potencia
+	IF HMI.Bt_ManForwardExtruder OR HMI.Bt_ManBackwardsExtruder OR HMI.Bt_ManBackwardsPuller OR HMI.Bt_ManForwardPuller THEN
+		MC.En_Power := TRUE;
+		//Ya en potencia, se ejecuta la orden
+		IF Motion.FB_Power.Status AND Motion.FB_Power2.Status AND Motion.FB_Power3.Status THEN
+			MC.Man_ForwardExtruder := HMI.Bt_ManForwardExtruder;
+			MC.Man_BackwardsExtruder := HMI.Bt_ManBackwardsExtruder;
+			MC.Man_ForwardPuller:=HMI.Bt_ManForwardPuller;
+			MC.Man_BackwardsPuller:=HMI.Bt_ManBackwardsPuller;
+		END_IF
+	//Si se deja de pulsar, al acabar movimiento, se quita potencia
+	ELSE
+		MC.Man_ForwardExtruder := FALSE;
+		MC.Man_BackwardsExtruder := FALSE;
+		MC.Man_ForwardPuller:=FALSE;
+		MC.Man_BackwardsPuller:=FALSE;
+		IF NOT Motion.FB_ManualExtruder.Busy AND NOT Motion.FB_ManualPuller.Busy THEN
+			MC.En_Power := FALSE;
+		ELSE
+			MC.En_Power := TRUE;
+		END_IF
+	END_IF
+	IO.Q_VisionLight := HMI.Bt_Light;
+	
+	GVL.Vision.SingleShot(Enable:=HMI.Bt_ActivateSingle, 
+						Execute:=HMI.Bt_Shot,
+						Q=>GVL.VisionResults,
+						Measurement=>GVL.NuevaMedidaCamara);
+    GVL.Vision.ContinuousShot(Enable:=HMI.Bt_ActivateContinuous,
+						Q=>GVL.VisionResults);		
+	
+	IF HMI.Bt_ActivateSingle AND GVL.NuevaMedidaCamara THEN
+		// Restablecer valores de medida para una futura medida
+		GVL.NuevaMedidaCamara:=FALSE;
+		GVL.Vision.SingleShot(Enable:=TRUE, Execute:=FALSE);
+		SumSenOpt:=0.0;
+		FOR LoopCounter:=0 TO 7 BY 1 DO
+			GVL.VisionResultsmm[LoopCounter] := GVL.VisionResults[LoopCounter]*GVL.ScalingFactor;
+			SumSenOpt:=GVL.VisionResultsmm[LoopCounter]+SumSenOpt;
+		END_FOR	
+		MedSenOpt:=SumSenOpt/3;
+		
+		//Calculo del diametro
+		MedSensores:=((GVL.MedidaSensorMecanico+MedSenOpt)/2);
+	END_IF
+	IF HMI.Bt_ActivateContinuous THEN
+		// Restablecer valores de medida para una futura medida
+		SumSenOpt:=0.0;
+		FOR LoopCounter:=0 TO 7 BY 1 DO
+			GVL.VisionResultsmm[LoopCounter] := GVL.VisionResults[LoopCounter]*GVL.ScalingFactor;
+			SumSenOpt:=GVL.VisionResultsmm[LoopCounter]+SumSenOpt;
+		END_FOR	
+		MedSenOpt:=SumSenOpt/3;
+		
+		//Calculo del diametro
+		MedSensores:=((GVL.MedidaSensorMecanico+MedSenOpt)/2);
+		
+		//Hacer media de las 10 ultimas medidas del diametro
+		Suma:= Suma - Lecturas[Index];
+		Lecturas[index]:=MedSensores;
+		Suma:=Suma+Lecturas[index];
+		Index:= Index + 1;
+		IF (Index > 9) THEN
+			Index := 0;    	//Volvemos al inicio del vector
+		END_IF
+		Medida:=Suma/10;
+	END_IF
+	
+ELSE
+	HMI.Bt_ManHeatBot := FALSE;
+	HMI.Bt_ManHeatTop:= FALSE;
+	MC.Man_ForwardExtruder := FALSE;
+	HMI.Bt_ManForwardExtruder := FALSE;
+	MC.Man_BackwardsExtruder := FALSE;
+	HMI.Bt_ManBackwardsExtruder := FALSE;
+	MC.Man_ForwardPuller := FALSE;
+	HMI.Bt_ManForwardPuller := FALSE;
+	MC.Man_BackwardsPuller := FALSE;
+	HMI.Bt_ManBackwardsPuller := FALSE;
+	HMI.Bt_Light := FALSE;
+	HMI.Bt_ActivateSingle:=FALSE;
+	HMI.Bt_ActivateContinuous:=FALSE;
+END_IF
+
+ExitManual(clk:=(GVL.Mode = Modes.MAN));
+IF ExitManual.Q THEN
+	IO.Q_HeaterB := FALSE;
+	IO.Q_HeaterT :=FALSE;
+	IO.Q_VisionLight := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Manual">
+      <LineId Id="399" Count="0" />
+      <LineId Id="332" Count="2" />
+      <LineId Id="344" Count="0" />
+      <LineId Id="357" Count="0" />
+      <LineId Id="336" Count="4" />
+      <LineId Id="345" Count="0" />
+      <LineId Id="341" Count="1" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="328" Count="0" />
+      <LineId Id="138" Count="20" />
+      <LineId Id="490" Count="0" />
+      <LineId Id="162" Count="20" />
+      <LineId Id="462" Count="0" />
+      <LineId Id="211" Count="10" />
+      <LineId Id="223" Count="9" />
+      <LineId Id="445" Count="0" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="253" Count="21" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

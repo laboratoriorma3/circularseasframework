@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="MAIN" Id="{d8de5791-f153-470a-bfaa-453c619a7f06}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	En:BOOL;
+	Shot:BOOL;
+	Result:ARRAY [0..7] OF REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Motion.InitMotion();
+GVL.Vision();
+
+//Medida temperatura
+//MedidaTempPuente();	//Medir la temperatura de los termicos con el puente de resistencias
+MedidaTempTarjeta();	//Medir la temperatura de los termicos con la tarjeta EL3202
+
+//ControlTemp();		//Gestion temperatura con bloques TF4110
+
+MedidaDiamMec();	//Medida del diametro con el sensor mecanico
+
+OperatingModes();
+
+IF GVL.Mode = Modes.AUTO THEN
+	Basic();
+END_IF
+
+Manual();
+VisuLogic();
+Motion();
+GestionVentiladores();
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="49" Count="1" />
+      <LineId Id="83" Count="3" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="54" Count="8" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
