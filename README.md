@@ -32,7 +32,7 @@ Source Code availabe into src/CircularSeasExtruder. Use TwinCAT 3 XAE Shell to o
 
 * Extruder v1: Version made with a drill as extruder, controlled by Arduino. Extruder heater are made of nichrome thread.
 
-* Extruder v2: Version made with a custom machined extruder. Controlled by Arduino and code in repository on LaboratorioRMA3 project TFG-TFM. This prototype has several problems related to temperature control and motion. Stepper motor has low power to achieve the extrusion and K Thermocouples shows an unstable measurement.
+* Extruder v2: Version made with a custom machined extruder. Controlled by Arduino and code in repository on LaboratorioRMA3. This prototype has several problems related to temperature control and motion. Stepper motor has low power to achieve the extrusion and K Thermocouples shows an unstable measurement.
 
 ### About this prototype
 
