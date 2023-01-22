@@ -40,4 +40,4 @@ This tries to improve the prototype v2, using a servo motor with a reducer to ex
 
 In addition, measurements of filament diameter will perform using OMRON FQ-M Vision Sensor via EtherCAT from TwinCAT3.
 
-Developers that contributes in this repository: Bruno Portela, Diego Silva, Julio Garrido, Enrique Riveiro, Josué Roberto Rivera Andrade y Alejandro Alonso.
+Developers that contributes in this repository: Bruno Portela, Diego Silva, Julio Garrido, Enrique Riveiro, Josué R. Rivera y Alejandro Alonso.
