@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Onartu</value>
+  </data>
+  <data name="AllParametersMustProvide" xml:space="preserve">
+    <value>Parametro guztiak hautatu behar dituzu</value>
+  </data>
+  <data name="CanPrintedFromLocal" xml:space="preserve">
+    <value>Fitxategia tokiko fitxategietan inprimatzeko erabilgarri dago</value>
+  </data>
+  <data name="ConnectionError" xml:space="preserve">
+    <value>Konexioaren errorea</value>
+  </data>
+  <data name="DeletingBodyErrorProcesing" xml:space="preserve">
+    <value>Ezin da inprimatzen ari den fitxategirik ezabatu</value>
+  </data>
+  <data name="DeletingBodySelectOne" xml:space="preserve">
+    <value>Ezabatu beharreko fitxategi bat hautatu behar duzu</value>
+  </data>
+  <data name="DeletingHeader" xml:space="preserve">
+    <value>Hutsegitea ezabatzen</value>
+  </data>
+  <data name="DeletingReturn" xml:space="preserve">
+    <value>Itzuli</value>
+  </data>
+  <data name="DisconnectedBack" xml:space="preserve">
+    <value>Zatoz menu nagusira</value>
+  </data>
+  <data name="DisconnectedBody" xml:space="preserve">
+    <value>Ezin da Octoprint-era konektatu</value>
+  </data>
+  <data name="DisconnectedHeader" xml:space="preserve">
+    <value>Konexioaren errorea</value>
+  </data>
+  <data name="DisconnectedWait" xml:space="preserve">
+    <value>Itxaron</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Errorea</value>
+  </data>
+  <data name="FileNotProvided" xml:space="preserve">
+    <value>Ez da fitxategirik eman</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Ez</value>
+  </data>
+  <data name="OrderStock" xml:space="preserve">
+    <value>Agindua</value>
+  </data>
+  <data name="OutStock" xml:space="preserve">
+    <value>Agortuta</value>
+  </data>
+  <data name="OutStockMessage" xml:space="preserve">
+    <value>Ez dago harizpi mota honetarako stockik</value>
+  </data>
+  <data name="PerhapsSupportNeeded" xml:space="preserve">
+    <value>Eskaera ezin izan da bete. Saiatu laguntza gaitzen eta arazoak jarraitzen badu, jarri harremanetan administratzaile batekin.</value>
+  </data>
+  <data name="PrintingBodyProcessing" xml:space="preserve">
+    <value>Inprimagailua pieza bat prozesatzen ari da. itxaron lehenengo amaitzeko</value>
+  </data>
+  <data name="PrintingBodySelectOne" xml:space="preserve">
+    <value>Inprimatzeko fitxategi bat hautatu behar duzu</value>
+  </data>
+  <data name="PrintingDirectly" xml:space="preserve">
+    <value>Aukeratutako fitxategia zuzenean inprimatu nahi duzu?</value>
+  </data>
+  <data name="PrintingHeaderError" xml:space="preserve">
+    <value>Inprimatzearen huts egin du</value>
+  </data>
+  <data name="PrintingReturn" xml:space="preserve">
+    <value>Itzuli</value>
+  </data>
+  <data name="PrintingWorking" xml:space="preserve">
+    <value>Inprimagailua funtzionatzen ari da. Fitxategia kargatuko da, baina unea amaitu arte itxaron behar duzu. Geroago bertako inprimatze menuan hauta dezakezu</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Prest</value>
+  </data>
+  <data name="SelectMaterial" xml:space="preserve">
+    <value>Material bat hautatu behar duzu</value>
+  </data>
+  <data name="ServerDisconnected" xml:space="preserve">
+    <value>Ezin da zerbitzarira konektatu. Saiatu geroago</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Arrakasta</value>
+  </data>
+  <data name="SucessUpload" xml:space="preserve">
+    <value>Behar bezala kargatu da</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Errore ezezaguna</value>
+  </data>
+  <data name="UploadOnlyGCODE" xml:space="preserve">
+    <value>Gcode formatuko fitxategiak soilik onartzen dira. Ezin izan da kargatu</value>
+  </data>
+  <data name="UploadOnlySTL" xml:space="preserve">
+    <value>STL fitxategiak bakarrik hautatu behar dituzu</value>
+  </data>
+  <data name="WarningHeader" xml:space="preserve">
+    <value>Abisua</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Bai</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Kantitatea</value>
+  </data>
+  <data name="OrderRegistered" xml:space="preserve">
+    <value>Eskaera behar bezala erregistratu da</value>
+  </data>
+  <data name="OrderID" xml:space="preserve">
+    <value>Eskaera-identifikatzailea</value>
+  </data>
+  <data name="UwpOrder" xml:space="preserve">
+    <value>Mahaigaineko aplikazioan, ezin duzu QR bat eskaneatu. Horren ordez, hautatu ordena pantailan agertzen den zerrendatik eta egin klik botoi honetan onartzeko.</value>
+  </data>
+  <data name="UwpSpoolStock" xml:space="preserve">
+    <value>Mahaigaineko aplikazioan, ezin duzu QR bat eskaneatu. Horren ordez, hautatu materiala pantailan bistaratzen zen zerrendatik eta egin klik botoi honetan agortutako spool bat baztertzeko.</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Materiala</value>
+  </data>
+  <data name="SpendOneSpool" xml:space="preserve">
+    <value>Bobina bat gastatu duzula berresten du</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="SureConfirmOrders" xml:space="preserve">
+    <value>Ziur eskaera berresten duzula datu hauekin?</value>
+  </data>
+</root>
