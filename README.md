@@ -8,8 +8,6 @@ It includes the source code of:
 
 * CircularSeasExtruder
 
-* CircularSeasPrinter
-
 ## CircularSeasFramework
 
 CircularSeas Framework for printing and slicing remotely and easily by users, using an arquitecture composed by three elements:
